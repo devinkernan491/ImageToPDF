@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Swift Package Manager build artifacts
+.build/
+.swiftpm/
+
+# Built application bundle
+*.app/
+ImageToPDF.app/
+
+# Temporary / Output PDFs
+*.pdf
+
+# Xcode user state
+xcuserdata/
+*.xcworkspace
