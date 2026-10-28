@@ -7,9 +7,10 @@
 .build/
 .swiftpm/
 
-# Built application bundle
+# Built application bundle & installer
 *.app/
 ImageToPDF.app/
+*.dmg
 
 # Temporary / Output PDFs
 *.pdf

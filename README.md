@@ -2,6 +2,8 @@
 
 A native macOS application built with Swift and SwiftUI that converts images and program source code files into single or multi-page PDFs with drag-and-drop, syntax highlighting, custom page layout, compression options, and built-in PDF preview.
 
+[![Download DMG](https://img.shields.io/badge/Download-ImageToPDF.dmg-blue?style=for-the-badge&logo=apple)](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF.dmg)
+
 ---
 
 ## ✨ Features
@@ -68,11 +70,17 @@ You can pass code files, images, or entire folders via terminal:
 
 ---
 
-## 🛠 Rebuilding
+## 🛠 Rebuilding & Packaging
 
 To recompile the app after making changes:
 ```bash
 cd ~/ImageToPDF
 ./build_app.sh
+```
+
+To create a new **`.dmg` installer**:
+```bash
+cd ~/ImageToPDF
+./create_dmg.sh
 ```
 Zero third-party dependencies required. Uses Apple's native CoreGraphics, CoreText, PDFKit, and ImageIO frameworks.
