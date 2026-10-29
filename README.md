@@ -1,4 +1,4 @@
-# ImageToPDF 📄
+# File to PDF
 
 A native macOS application built with Swift and SwiftUI that converts images and program source code files into single or multi-page PDFs with drag-and-drop, syntax highlighting, custom page layout, compression options, and built-in PDF preview.
 
