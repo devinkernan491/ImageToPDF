@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Image to PDF</string>
+    <string name="add_files">Add Files</string>
+    <string name="add_folder">Add Folder</string>
+    <string name="convert_to_pdf">Convert to PDF</string>
+    <string name="no_files">No files selected. Tap Add Files to begin.</string>
+</resources>

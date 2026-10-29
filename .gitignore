@@ -18,3 +18,4 @@ ImageToPDF.app/
 # Xcode user state
 xcuserdata/
 *.xcworkspace
+__pycache__/

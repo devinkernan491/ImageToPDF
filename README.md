@@ -1,19 +1,31 @@
 # File to PDF
 
-A native macOS application built with Swift and SwiftUI that converts images and program source code files into single or multi-page PDFs with drag-and-drop, syntax highlighting, custom page layout, compression options, and built-in PDF preview.
+A multi-platform suite (macOS, Windows, Android) that converts images and program source code files into single or multi-page PDFs with drag-and-drop, syntax highlighting, custom page layout, compression options, and built-in PDF preview.
 
-[![Download DMG](https://img.shields.io/badge/Download-ImageToPDF.dmg-blue?style=for-the-badge&logo=apple)](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF.dmg)
+[![Download macOS DMG](https://img.shields.io/badge/Download-macOS%20DMG-blue?style=for-the-badge&logo=apple)](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF.dmg)
+[![Download Windows EXE](https://img.shields.io/badge/Download-Windows%20EXE-blue?style=for-the-badge&logo=windows)](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF-Windows.exe)
+[![Download Android APK](https://img.shields.io/badge/Download-Android%20APK-green?style=for-the-badge&logo=android)](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF.apk)
 
 ---
 
-## ✨ Features
+## 📱 Platform Versions
 
-- **Drag-and-Drop**: Drag individual image files, code files, or entire folders directly into the window. All supported files are recursively found and automatically sorted naturally (e.g. `file_1`, `file_2`, `file_10`).
+| Platform | Format | Technology | Directory |
+|---|---|---|---|
+| **macOS** | `.dmg` installer & `.app` | Swift, SwiftUI, PDFKit | Root (`Sources/`, `build_app.sh`, `create_dmg.sh`) |
+| **Windows** | `.exe` standalone & GUI | Python, CustomTkinter, ReportLab | [`windows/`](windows/) |
+| **Android** | `.apk` & Studio project | Kotlin, Material 3, Android `PdfDocument` | [`android/`](android/) |
+
+---
+
+## ✨ Features Across All Platforms
+
+- **Drag-and-Drop / Multi-Select**: Drag individual image files, code files, or entire folders directly into the window.
 - **Broad File Format Support**:
   - **Program Code Files**: `.py`, `.cpp`, `.c`, `.h`, `.hpp`, `.swift`, `.js`, `.ts`, `.rs`, `.go`, `.java`, `.kt`, `.sh`, `.json`, `.xml`, `.yaml`, `.sql`, `.dart`, `.md`, `.txt`, and more.
   - **Images**: PNG, JPEG/JPG, HEIC/HEIF (native iPhone camera photos), WebP, TIFF, BMP, and GIF.
 - **Syntax Highlighting & Code Pagination**:
-  - Monospace font (`Menlo`) with syntax coloring for keywords, types, strings, comments, numbers.
+  - Monospace font with syntax coloring for keywords, types, strings, comments, numbers.
   - Line numbers gutter with subtle separators.
   - Automatic line wrapping with `↳` continuation markers.
   - Page header with file name, language badge (e.g. `[Python]`, `[C++]`), and `Page X of Y`.
@@ -26,61 +38,34 @@ A native macOS application built with Swift and SwiftUI that converts images and
   - **Orientation**: Auto-matches content, or lock to Portrait/Landscape.
   - **Margins**: None, Small (18 pt), or Normal (36 pt).
   - **Compression**: Choose between Original / Maximum quality, High (90%), Medium (75%), or Compressed (50%) to shrink PDF size.
-- **Built-in PDF Preview**: Inspect your multi-page document before saving.
-- **Dual Mode (GUI + CLI)**: Run as a full macOS graphical app or automate directly from Terminal.
+- **Built-in PDF Preview & Direct Share**: Inspect before saving or share directly via the system share sheet.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start by Platform
 
-### 1. Launch the Graphical App
-To run the app right away:
-```bash
-open ~/ImageToPDF/ImageToPDF.app
-```
-Then simply **drag and drop any image, code file (.py, .cpp, etc.), or folder** right onto the app window!
+### 🍎 macOS
+1. Download [ImageToPDF.dmg](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF.dmg).
+2. Drag **ImageToPDF** to **Applications**.
+3. Launch from Spotlight (`Cmd + Space`) or terminal:
+   ```bash
+   open ~/ImageToPDF/ImageToPDF.app
+   ```
 
-### 2. Install to Applications (Optional)
-To copy the app into your Mac's `/Applications` folder:
-```bash
-cd ~/ImageToPDF
-./build_app.sh --install
-```
-Once installed, you can launch **Image to PDF** from Spotlight (`Cmd + Space`), Launchpad, or pin it to your Dock!
+### 🪟 Windows
+1. Download [ImageToPDF-Windows.exe](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF-Windows.exe) (or run `python windows/app.py`).
+2. Double-click `ImageToPDF-Windows.exe` to launch the modern Windows UI!
+3. Or use from Command Prompt / PowerShell:
+   ```powershell
+   ImageToPDF.exe script.py diagram.png -o output.pdf
+   ```
 
----
-
-## 💻 Terminal / CLI Usage
-
-You can pass code files, images, or entire folders via terminal:
-
-```bash
-# Convert Python and C++ source code to PDF
-~/ImageToPDF/ImageToPDF.app/Contents/MacOS/ImageToPDF main.py controller.cpp -o code_review.pdf
-
-# Convert a mix of code files and images
-~/ImageToPDF/ImageToPDF.app/Contents/MacOS/ImageToPDF script.py diagram.png -o documentation.pdf
-
-# Convert an entire folder of source code
-~/ImageToPDF/ImageToPDF.app/Contents/MacOS/ImageToPDF ~/my_project/src -o project_code.pdf
-
-# View CLI options
-~/ImageToPDF/ImageToPDF.app/Contents/MacOS/ImageToPDF --help
-```
+### 🤖 Android
+1. Download [ImageToPDF.apk](https://github.com/devinkernan491/ImageToPDF/releases/latest/download/ImageToPDF.apk) to your Android phone and install.
+2. Or open the [`android/`](android/) project in Android Studio and run on your device.
 
 ---
 
-## 🛠 Rebuilding & Packaging
+## 🛠 Multi-Platform CI/CD
 
-To recompile the app after making changes:
-```bash
-cd ~/ImageToPDF
-./build_app.sh
-```
-
-To create a new **`.dmg` installer**:
-```bash
-cd ~/ImageToPDF
-./create_dmg.sh
-```
-Zero third-party dependencies required. Uses Apple's native CoreGraphics, CoreText, PDFKit, and ImageIO frameworks.
+This repository includes a multi-platform [GitHub Actions workflow](.github/workflows/release.yml) that builds `.dmg` for macOS, `.exe` for Windows, and `.apk` for Android automatically!
